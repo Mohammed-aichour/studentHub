@@ -1,0 +1,20 @@
+{
+  "name": "student-hub",
+  "version": "1.0.0",
+  "description": "Student Academic Portal & Collaboration Platform by Mohammed AICHOUR",
+  "main": "server/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server/index.js",
+    "test": "node tests/test_studenthub.js"
+  },
+  "keywords": [
+    "student-portal",
+    "education",
+    "academic-management",
+    "gpa-calculator",
+    "course-tracking"
+  ],
+  "author": "Mohammed AICHOUR",
+  "license": "MIT"
+}
