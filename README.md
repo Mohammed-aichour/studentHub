@@ -8,6 +8,10 @@
 [![SQL](https://img.shields.io/badge/SQL-Relational%20Schema-4479A1?style=flat&logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![Status](https://img.shields.io/badge/Status-Fully%20Implemented-success)](#)
 
+<p align="center">
+  <img src="screenshots/student_hub_preview.png" alt="Aperçu StudentHub" width="100%">
+</p>
+
 ---
 
 ## 📌 Présentation du Projet
