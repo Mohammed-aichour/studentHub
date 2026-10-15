@@ -44,8 +44,9 @@ const db = {
 };
 
 const server = http.createServer((req, res) => {
-  const parsed = url.parse(req.url, true);
-  const pathname = parsed.pathname;
+  const host = req.headers.host || 'localhost';
+  const reqUrl = new URL(req.url, `http://${host}`);
+  const pathname = reqUrl.pathname;
 
   // CORS Headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -106,7 +107,8 @@ const server = http.createServer((req, res) => {
 });
 
 const PORT = process.env.PORT || 3005;
-if (process.env.NODE_ENV !== 'test') {
+const isMain = process.argv[1] && (path.resolve(process.argv[1]) === __filename);
+if (isMain && process.env.NODE_ENV !== 'test') {
   server.listen(PORT, () => {
     console.log(`StudentHub running at http://localhost:${PORT}`);
   });

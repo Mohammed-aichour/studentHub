@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub — Portail Universitaire Étudiant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #0f172a;
+      --border: #1e293b;
+      --primary: #38bdf8;
+      --primary-hover: #0284c7;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --success: #10b981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    body { background-color: var(--bg); color: var(--text); padding: 2rem 1rem; }
+    .container { max-width: 1000px; margin: 0 auto; }
+    header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; margin-bottom: 2rem; }
+    .badge { background: rgba(56, 189, 248, 0.1); color: var(--primary); padding: 0.35rem 0.85rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 600; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem; padding: 1.25rem; }
+    .card-title { font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 0.75rem; }
+    .stat-val { font-size: 2rem; font-weight: 700; color: #fff; }
+    .table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    .table th, .table td { padding: 0.75rem; text-align: left; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .table th { color: var(--muted); font-weight: 500; }
+    .status-badge { background: rgba(16, 185, 129, 0.15); color: var(--success); padding: 0.2rem 0.5rem; border-radius: 0.25rem; font-size: 0.75rem; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1 style="font-size: 1.6rem; font-weight: 700;">StudentHub Universiapolis</h1>
+        <p style="color: var(--muted); font-size: 0.9rem;">Portail Universitaire Académique & Suivi des Performances</p>
+      </div>
+      <div>
+        <span class="badge">Étudiant : Mohammed AICHOUR (E202401)</span>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">Moyenne Générale (GPA)</div>
+        <div class="stat-val">19.00 <span style="font-size: 1rem; color: var(--muted);">/ 20</span></div>
+        <p style="color: var(--success); font-size: 0.85rem; margin-top: 0.5rem;">Mention Très Bien — Félicitations</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Présence & Assiduité</div>
+        <div class="stat-val">100%</div>
+        <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">48/48 séances validées</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Semestre Actuel</div>
+        <div class="stat-val">S4</div>
+        <p style="color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem;">Génie Informatique & IA</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 2rem;">
+      <h2 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Modules & Relevé de Notes</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Intitulé du Cours</th>
+            <th>Enseignant</th>
+            <th>Crédits</th>
+            <th>Note Mi-Parcours</th>
+            <th>Note Examen</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody id="grades-tbody">
+          <tr>
+            <td><strong>INFO401</strong></td>
+            <td>Architecture Logicielle & Microservices</td>
+            <td>Dr. Bennani</td>
+            <td>4 ECTS</td>
+            <td>18.5 / 20</td>
+            <td>19.0 / 20</td>
+            <td><span class="status-badge">Validé</span></td>
+          </tr>
+          <tr>
+            <td><strong>INFO402</strong></td>
+            <td>Vision par Ordinateur & Deep Learning</td>
+            <td>Dr. Alami</td>
+            <td>4 ECTS</td>
+            <td>19.0 / 20</td>
+            <td>19.5 / 20</td>
+            <td><span class="status-badge">Validé</span></td>
+          </tr>
+          <tr>
+            <td><strong>INFO403</strong></td>
+            <td>Bases de Données Avancées & SQL</td>
+            <td>Pr. Chraibi</td>
+            <td>3 ECTS</td>
+            <td>17.0 / 20</td>
+            <td>18.0 / 20</td>
+            <td><span class="status-badge">Validé</span></td>
+          </tr>
+          <tr>
+            <td><strong>INFO404</strong></td>
+            <td>Développement Web Full-Stack</td>
+            <td>Pr. Mansouri</td>
+            <td>3 ECTS</td>
+            <td>19.5 / 20</td>
+            <td>20.0 / 20</td>
+            <td><span class="status-badge">Validé</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Emploi du Temps Hebdomadaire</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Jour</th>
+            <th>Horaire</th>
+            <th>Cours</th>
+            <th>Salle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lundi</strong></td>
+            <td>08:30 - 11:30</td>
+            <td>Architecture Logicielle & Microservices</td>
+            <td>Amphi B</td>
+          </tr>
+          <tr>
+            <td><strong>Mardi</strong></td>
+            <td>14:00 - 17:00</td>
+            <td>Vision par Ordinateur & Deep Learning</td>
+            <td>Lab AI-1</td>
+          </tr>
+          <tr>
+            <td><strong>Jeudi</strong></td>
+            <td>09:00 - 12:00</td>
+            <td>Développement Web Full-Stack</td>
+            <td>Lab Web</td>
+          </tr>
+          <tr>
+            <td><strong>Vendredi</strong></td>
+            <td>14:30 - 17:30</td>
+            <td>Bases de Données Avancées & SQL</td>
+            <td>Salle 204</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

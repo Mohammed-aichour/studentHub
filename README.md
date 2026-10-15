@@ -50,6 +50,80 @@ studentHub/
 
 ---
 
+## 📡 Documentation de l'API RESTful
+
+| Méthode | Point d'Accès | Description | Format de Réponse |
+|---|---|---|---|
+| `GET` | `/api/student` | Informations de profil de l'étudiant | JSON `{ success, student }` |
+| `GET` | `/api/courses` | Liste des modules de formation et enseignants | JSON `{ success, courses }` |
+| `GET` | `/api/grades` | Notes de contrôles, examens et calcul du GPA | JSON `{ success, grades, gpaOutOf20 }` |
+| `GET` | `/api/schedule` | Emploi du temps hebdomadaire détaillé | JSON `{ success, schedule }` |
+| `GET` | `/api/attendance` | Statistiques de présence et taux d'assiduité | JSON `{ success, attendance }` |
+
+---
+
+## 🏛️ Architecture & Modèle Relationnel
+
+### Architecture du Système
+
+```mermaid
+flowchart TD
+    Client["Client Web (HTML5 / CSS3 / Vanilla JS)"]
+    API["Serveur Node.js REST API (HTTP ESM)"]
+    DB["Base de Données / In-Memory Store"]
+    SQL["Schéma Relationnel SQL (database/schema.sql)"]
+
+    Client -- "HTTP GET /api/*" --> API
+    API -- "Extraction & Agrégation" --> DB
+    SQL -. "DDL & Structure Relationnelle" .-> DB
+    API -- "JSON Responses" --> Client
+```
+
+### Schéma Entité-Association (ERD)
+
+```mermaid
+erDiagram
+    STUDENTS ||--o{ ENROLLMENTS : "s'inscrit à"
+    COURSES ||--o{ ENROLLMENTS : "comprend"
+    STUDENTS ||--o{ ATTENDANCE : "enregistre"
+
+    STUDENTS {
+        int id PK
+        string number
+        string name
+        string program
+        int semester
+    }
+
+    COURSES {
+        int id PK
+        string code
+        string title
+        int credits
+        string instructor
+        string room
+    }
+
+    ENROLLMENTS {
+        int id PK
+        int student_id FK
+        string course_code FK
+        float midterm
+        float final
+        string status
+    }
+
+    ATTENDANCE {
+        int id PK
+        int student_id FK
+        int total_sessions
+        int present
+        int absent
+    }
+```
+
+---
+
 ## 🚀 Démarrage Rapide
 
 ### 1. Démarrer le serveur
@@ -58,10 +132,11 @@ npm start
 ```
 Accédez ensuite au portail via : `http://localhost:3005`
 
-### 2. Lancer les tests
+### 2. Lancer les tests automatisés
 ```bash
 npm test
 ```
+La suite de tests vérifie l'intégrité des modèles de données, le calcul précis des moyennes (GPA), la conformité syntaxique du schéma DDL SQL et les 5 points d'accès HTTP REST.
 
 ---
 
